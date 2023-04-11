@@ -1,12 +1,7 @@
 <h2>programming books works!</h2>
 
 <ul *ngIf="isShowing">
-  <ng-container *ngFor="let book of books; let i = index">
-    <li class="book">
-      {{ book.name }}
-    </li>
-    <li>{{ book.author }}</li>
-    <p class="currency">{{ book.amount | currency : "PKR" }}</p>
-    <button>Add to Cart</button>
+  <ng-container *ngFor="let singleBook of books; let i = index">
+    <app-book [book]="singleBook"></app-book>
   </ng-container>
 </ul>
