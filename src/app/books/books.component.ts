@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Book } from '../types/Book';
 
 @Component({
@@ -6,7 +6,7 @@ import { Book } from '../types/Book';
   templateUrl: './books.component.html',
   styleUrls: ['./books.component.css'],
 })
-export class BooksComponent {
+export class BooksComponent implements OnInit {
   name = 'clean code';
   author = 'robert bob';
   isShowing = true;
@@ -34,6 +34,13 @@ export class BooksComponent {
       amount: 100,
     },
   ];
+
+  constructor() {
+    console.log('constructor');
+  }
+  ngOnInit(): void {
+    console.log('oninit');
+  }
 
   addToCart(book: Book): void {
     console.log(book);

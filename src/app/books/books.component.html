@@ -1,5 +1,5 @@
 <h2>programming books works!</h2>
-
+<button (click)="isShowing = !isShowing">toggle</button>
 <ul *ngIf="isShowing">
   <ng-container *ngFor="let singleBook of books; let i = index">
     <app-book (bookEmitter)="addToCart($event)" [book]="singleBook"></app-book>

@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  OnDestroy,
+} from '@angular/core';
 import { Book } from '../types/Book';
 
 @Component({
@@ -6,11 +13,17 @@ import { Book } from '../types/Book';
   templateUrl: './book.component.html',
   styleUrls: ['./book.component.css'],
 })
-export class BookComponent {
+export class BookComponent implements OnInit, OnDestroy {
   @Input() book: Book = {} as Book;
   @Output() bookEmitter = new EventEmitter<Book>();
 
+  constructor() {}
+  ngOnInit(): void {}
+
   addToCart(): void {
     this.bookEmitter.emit(this.book);
+  }
+  ngOnDestroy(): void {
+    console.log('ondestroy');
   }
 }
