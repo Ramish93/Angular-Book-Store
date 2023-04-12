@@ -3,5 +3,6 @@
   <p>{{ book.name }} by {{ book.author }}</p>
 
   <p class="currency">{{ book.amount | currency : "PKR" }}</p>
-  <button (click)="addToCart()">Add to Cart</button>
+  <button *ngIf="!isInCart" (click)="addToCart()">Add to Cart</button>
+  <button *ngIf="isInCart" (click)="removeFromCart()">Remove from Cart!</button>
 </li>
