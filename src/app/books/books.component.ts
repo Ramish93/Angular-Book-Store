@@ -18,9 +18,4 @@ export class BooksComponent implements OnInit {
   ngOnInit(): void {
     this.books = this.booksService.getBooks();
   }
-
-  addToCart(book: Book): void {
-    console.log(book);
-  }
-  cart: Book[] = [];
 }
