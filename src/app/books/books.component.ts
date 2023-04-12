@@ -35,12 +35,8 @@ export class BooksComponent implements OnInit {
     },
   ];
 
-  constructor() {
-    console.log('constructor');
-  }
-  ngOnInit(): void {
-    console.log('oninit');
-  }
+  constructor() {}
+  ngOnInit(): void {}
 
   addToCart(book: Book): void {
     console.log(book);
