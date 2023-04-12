@@ -35,5 +35,8 @@ export class BooksComponent {
     },
   ];
 
+  addToCart(book: Book): void {
+    console.log(book);
+  }
   cart: Book[] = [];
 }
