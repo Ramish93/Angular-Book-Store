@@ -1,24 +1,45 @@
 <div class="flex h-screen justify-center">
-  <form action="" class="p-4 rounded-lg border m-auto w-1.5/3">
+  <form action="" class="p-4 rounded-lg border m-auto w-1.5/3" #myForm="ngForm">
     <div class="my-5 w-full">
       <h1 class="text-center text-2xl py-8">Login</h1>
       <label for="email">Email :</label>
       <input
         type="email"
         id="email"
-        class="p-2 rounded w-full bg-gray-300 border"
+        class="p-2 rounded w-full bg-gray-300 border text-sm"
         placeholder="Email Address"
+        [(ngModel)]="form.email"
+        name="email"
+        #email="ngModel"
+        required
       />
+    </div>
+    <div
+      class="p-4 bg-red-300 text-red-800 rounded"
+      *ngIf="email.invalid && email.touched"
+    >
+      Email must be valid
     </div>
     <div class="my-5 w-full">
       <label for="password">Password :</label>
       <input
         type="password"
         id="password"
-        class="p-2 rounded w-full bg-gray-300 border"
+        class="p-2 rounded w-full bg-gray-300 border text-sm"
+        [(ngModel)]="form.password"
+        name="password"
         placeholder="Password"
+        #password="ngModel"
+        required
       />
     </div>
+    <div
+      class="p-4 bg-red-300 text-red-800 rounded"
+      *ngIf="password.invalid && password.touched"
+    >
+      Password must be valid
+    </div>
+
     <div class="my-5 w-full">
       <label for="password2">Confirm Password :</label>
       <input
@@ -26,10 +47,14 @@
         id="password2"
         class="p-2 rounded w-full bg-gray-300 border"
         placeholder="Confirm Password"
+        [(ngModel)]="form.confirmPassword"
+        name="password2"
+        #confirmPassword="ngModel"
       />
     </div>
     <div class="my-5">
       <input
+        [disabled]="myForm.form.invalid"
         type="submit"
         class="w-full bg-yellow-700 text-white hover:bg-purple-300 rounded p-2"
       />
