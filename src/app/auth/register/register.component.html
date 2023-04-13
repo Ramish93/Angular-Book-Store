@@ -1,5 +1,9 @@
 <div class="flex h-screen justify-center">
-  <form action="" class="p-4 rounded-lg border m-auto w-1.5/3" #myForm="ngForm">
+  <form
+    class="p-4 rounded-lg border m-auto w-1.5/3"
+    #myForm="ngForm"
+    (ngSubmit)="submit()"
+  >
     <div class="my-5 w-full">
       <h1 class="text-center text-2xl py-8">Login</h1>
       <label for="email">Email :</label>
