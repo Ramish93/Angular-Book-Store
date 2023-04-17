@@ -62,8 +62,8 @@
         type="submit"
         class="w-full bg-purple-800 text-white hover:bg-purple-500 rounded p-2"
       >
-        <ng-container *ngIf="isLoading">Loading ...</ng-container>
-        <ng-container *ngIf="!isLoading">Submit</ng-container>
+        <ng-container *ngIf="isLoading()">Loading ...</ng-container>
+        <ng-container *ngIf="!isLoading()">Submit</ng-container>
       </button>
     </div>
   </form>

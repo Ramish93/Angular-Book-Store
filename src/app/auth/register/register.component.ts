@@ -6,6 +6,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from 'firebase/auth';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-register',
@@ -18,30 +19,14 @@ export class RegisterComponent {
     password: '',
     confirmPassword: '',
   };
-  passwordMatched: boolean = true;
-  isLoading: boolean = false;
+
+  constructor(private authService: AuthService) {}
 
   submit() {
-    if (
-      this.form.password !== this.form.confirmPassword ||
-      this.form.password === '' ||
-      this.form.confirmPassword === ''
-    ) {
-      this.passwordMatched = false;
-    }
-    if (this.isLoading) return;
-    this.isLoading = true;
+    this.authService.register(this.form);
+  }
 
-    const auth = getAuth();
-    createUserWithEmailAndPassword(auth, this.form.email, this.form.password)
-      .then((userCredential) => {
-        console.log(userCredential);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorMessage, errorCode);
-      })
-      .finally(() => (this.isLoading = false));
+  isLoading() {
+    return this.authService.isLoading;
   }
 }
