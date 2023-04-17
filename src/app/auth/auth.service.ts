@@ -3,6 +3,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   signInWithEmailAndPassword,
+  signOut,
 } from 'firebase/auth';
 import { LoginForm, RegisterForm } from '../types/Auth';
 import { takeUntil } from 'rxjs';
@@ -63,5 +64,16 @@ export class AuthService {
         this.isAuthenticated = false;
       })
       .finally(() => (this.isLoading = false));
+  }
+
+  logout() {
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        this.router.navigate(['/login']);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 }
