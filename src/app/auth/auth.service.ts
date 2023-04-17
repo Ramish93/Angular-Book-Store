@@ -70,6 +70,7 @@ export class AuthService {
     const auth = getAuth();
     signOut(auth)
       .then(() => {
+        this.isAuthenticated = false;
         this.router.navigate(['/login']);
       })
       .catch((error) => {
