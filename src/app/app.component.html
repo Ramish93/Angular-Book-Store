@@ -9,7 +9,7 @@
       <a class="mx-4" routerLink="/register">Register</a>
     </ng-container>
     <ng-container *ngIf="isAuthenticated()">
-      <button class="mx-4">Logout !</button>
+      <button class="mx-4" (click)="logout()">Logout !</button>
     </ng-container>
   </div>
 </nav>
