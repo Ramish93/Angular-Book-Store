@@ -19,6 +19,7 @@ export class RegisterComponent {
     confirmPassword: '',
   };
   passwordMatched: boolean = true;
+  isLoading: boolean = false;
 
   submit() {
     if (
@@ -28,6 +29,8 @@ export class RegisterComponent {
     ) {
       this.passwordMatched = false;
     }
+    if (this.isLoading) return;
+    this.isLoading = true;
 
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, this.form.email, this.form.password)
@@ -37,6 +40,8 @@ export class RegisterComponent {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-      });
+        console.log(errorMessage, errorCode);
+      })
+      .finally(() => (this.isLoading = false));
   }
 }

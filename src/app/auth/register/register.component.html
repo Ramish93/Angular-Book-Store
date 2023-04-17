@@ -5,7 +5,7 @@
     (ngSubmit)="submit()"
   >
     <div class="my-5 w-full">
-      <h1 class="text-center text-2xl py-8">Login</h1>
+      <h1 class="text-center text-2xl py-8">Register Here!</h1>
       <label for="email">Email :</label>
       <input
         type="email"
@@ -57,11 +57,14 @@
       />
     </div>
     <div class="my-5">
-      <input
+      <button
         [disabled]="myForm.form.invalid"
         type="submit"
-        class="w-full bg-yellow-700 text-white hover:bg-purple-300 rounded p-2"
-      />
+        class="w-full bg-purple-800 text-white hover:bg-purple-500 rounded p-2"
+      >
+        <ng-container *ngIf="isLoading">Loading ...</ng-container>
+        <ng-container *ngIf="!isLoading">Submit</ng-container>
+      </button>
     </div>
   </form>
 </div>
